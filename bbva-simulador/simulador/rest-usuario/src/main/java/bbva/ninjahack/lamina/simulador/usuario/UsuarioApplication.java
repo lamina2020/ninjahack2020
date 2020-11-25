@@ -17,9 +17,9 @@ import javax.ws.rs.core.Application;
         description = "This API allows CRUD operations on a usuario",
         version = "1.0",
         contact = @Contact(name = "La Mina", url = "https://github.com/lamina2020")),
-    servers = {
-        @Server(url = "http://localhost:8083")
-    },
+//    servers = {
+//        @Server(url = "http://localhost:8083")
+//    },
     externalDocs = @ExternalDocumentation(url = "https://github.com/lamina2020/ninjahack", description = "Proyectos de La Mina"),
     tags = {
         @Tag(name = "api", description = "Public that can be used by anybody"),
