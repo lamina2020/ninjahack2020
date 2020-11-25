@@ -1,7 +1,7 @@
 // tag::adocPingUsuario[]
-package io.quarkus.workshop.superheroes.hero.health;
+package bbva.ninjahack.lamina.simulador.usuario.health;
 
-import io.quarkus.workshop.superheroes.hero.HeroResource;
+import bbva.ninjahack.lamina.simulador.usuario.UsuarioResource;
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.Liveness;

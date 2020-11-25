@@ -1,8 +1,8 @@
 // tag::adocDatabaseConnection[]
-package io.quarkus.workshop.superheroes.hero.health;
+package bbva.ninjahack.lamina.simulador.usuario.health;
 
-import io.quarkus.workshop.superheroes.hero.Hero;
-import io.quarkus.workshop.superheroes.hero.HeroService;
+import bbva.ninjahack.lamina.simulador.usuario.Usuario;
+import bbva.ninjahack.lamina.simulador.usuario.UsuarioService;
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.HealthCheckResponseBuilder;

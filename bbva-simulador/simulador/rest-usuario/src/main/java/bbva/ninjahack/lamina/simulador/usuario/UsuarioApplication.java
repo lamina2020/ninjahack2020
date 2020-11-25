@@ -1,5 +1,5 @@
 // tag::adocApplication[]
-package io.quarkus.workshop.superheroes.hero;
+package bbva.ninjahack.lamina.simulador.usuario;
 
 import org.eclipse.microprofile.openapi.annotations.ExternalDocumentation;
 import org.eclipse.microprofile.openapi.annotations.OpenAPIDefinition;
@@ -26,6 +26,6 @@ import javax.ws.rs.core.Application;
         @Tag(name = "usuarios", description = "Anybody interested in usuarios")
     }
 )
-public class UsuarioUApplication extends Application {
+public class UsuarioApplication extends Application {
 }
 // end::adocApplication[]

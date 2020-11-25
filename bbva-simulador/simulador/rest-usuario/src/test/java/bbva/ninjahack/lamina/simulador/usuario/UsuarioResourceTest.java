@@ -1,5 +1,5 @@
 // tag::adocResourceTest[]
-package io.quarkus.workshop.superheroes.hero;
+package bbva.ninjahack.lamina.simulador.usuario;
 
 import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
@@ -27,21 +27,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @QuarkusTest
 @QuarkusTestResource(DatabaseResource.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class HeroResourceTest {
+public class UsuarioResourceTest{
 
-    private static final String DEFAULT_NAME = "Super Baguette";
-    private static final String UPDATED_NAME = "Super Baguette (updated)";
-    private static final String DEFAULT_OTHER_NAME = "Super Baguette Tradition";
-    private static final String UPDATED_OTHER_NAME = "Super Baguette Tradition (updated)";
-    private static final String DEFAULT_PICTURE = "super_baguette.png";
-    private static final String UPDATED_PICTURE = "super_baguette_updated.png";
-    private static final String DEFAULT_POWERS = "eats baguette really quickly";
-    private static final String UPDATED_POWERS = "eats baguette really quickly (updated)";
-    private static final int DEFAULT_LEVEL = 42;
-    private static final int UPDATED_LEVEL = 43;
-
-    private static final int NB_HEROES = 951;
-    private static String heroId;
 
     // tag::adocOpenAPI[]
     @Test

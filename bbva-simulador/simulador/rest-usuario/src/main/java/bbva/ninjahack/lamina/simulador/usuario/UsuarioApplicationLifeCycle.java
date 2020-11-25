@@ -1,5 +1,5 @@
 // tag::adocApplicationLifeCycle[]
-package io.quarkus.workshop.superheroes.hero;
+package bbva.ninjahack.lamina.simulador.usuario;
 
 import io.quarkus.runtime.ShutdownEvent;
 import io.quarkus.runtime.StartupEvent;

@@ -1,4 +1,4 @@
-package io.quarkus.workshop.superheroes.hero;
+package bbva.ninjahack.lamina.simulador.usuario;
 
 import io.quarkus.test.common.QuarkusTestResourceLifecycleManager;
 import org.testcontainers.containers.PostgreSQLContainer;

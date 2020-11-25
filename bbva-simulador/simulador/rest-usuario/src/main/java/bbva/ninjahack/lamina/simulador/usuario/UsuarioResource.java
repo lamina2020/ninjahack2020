@@ -1,5 +1,5 @@
 // tag::adocResource[]
-package io.quarkus.workshop.superheroes.hero;
+package bbva.ninjahack.lamina.simulador.usuario;
 
 // end::adocResource[]
 // tag::adocMetricsImports[]
@@ -64,7 +64,7 @@ public class UsuarioResource {
     @Path("/login")
     public Response loginUsuario(
         @Valid Usuario usuario, @Context UriInfo uriInfo) {
-        usuarioBBDD = service.findUsuarioByEmail(usuario.email);
+        Usuario usuarioBBDD = service.findUsuarioByEmail(usuario.email);
 
         if(usuarioBBDD != null){
             if (usuario.password.equals(usuarioBBDD.password)){

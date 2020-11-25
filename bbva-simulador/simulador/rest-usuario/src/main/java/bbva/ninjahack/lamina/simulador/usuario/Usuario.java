@@ -1,5 +1,5 @@
 // tag::adocEntity[]
-package io.quarkus.workshop.superheroes.hero;
+package bbva.ninjahack.lamina.simulador.usuario;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.validation.constraints.Email;
 
 import java.util.Random;
 // end::adocEntity[]
@@ -34,5 +35,10 @@ public class Usuario extends PanacheEntity {
             ", password='" + password + '\'' +
         '}';
     }
+
+    public static Usuario findByEmail(String email){
+        return find("email", email).firstResult();
+    }
+
 }
 // end::adocEntity[]

@@ -1,5 +1,5 @@
 // tag::adocTransactional[]
-package io.quarkus.workshop.superheroes.hero;
+package bbva.ninjahack.lamina.simulador.usuario;
 
 // end::adocTransactional[]
 import org.eclipse.microprofile.config.inject.ConfigProperty;
