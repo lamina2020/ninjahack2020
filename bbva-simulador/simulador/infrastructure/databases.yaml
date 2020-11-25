@@ -1,0 +1,95 @@
+---
+apiVersion: postgresql.dev4devs.com/v1alpha1
+kind: Database
+metadata:
+    name: usuarios-database
+spec:
+    databaseCpu: 30m
+    databaseCpuLimit: 60m
+    databaseMemoryLimit: 512Mi
+    databaseMemoryRequest: 128Mi
+    databaseName: usuarios_database
+    databaseNameKeyEnvVar: POSTGRESQL_DATABASE
+    databasePassword: usuarios
+    databasePasswordKeyEnvVar: POSTGRESQL_PASSWORD
+    databaseStorageRequest: 1Gi
+    databaseUser: usuarios
+    databaseUserKeyEnvVar: POSTGRESQL_USER
+    image: centos/postgresql-96-centos7
+    size: 1
+---
+apiVersion: postgresql.dev4devs.com/v1alpha1
+kind: Database
+metadata:
+    name: cuentas-database
+spec:
+    databaseCpu: 30m
+    databaseCpuLimit: 60m
+    databaseMemoryLimit: 512Mi
+    databaseMemoryRequest: 128Mi
+    databaseName: cuentas_database
+    databaseNameKeyEnvVar: POSTGRESQL_DATABASE
+    databasePassword: cuentas
+    databasePasswordKeyEnvVar: POSTGRESQL_PASSWORD
+    databaseStorageRequest: 1Gi
+    databaseUser: cuentas
+    databaseUserKeyEnvVar: POSTGRESQL_USER
+    image: centos/postgresql-96-centos7
+    size: 1
+---
+apiVersion: postgresql.dev4devs.com/v1alpha1
+kind: Database
+metadata:
+    name: tarjetas-database
+spec:
+    databaseCpu: 30m
+    databaseCpuLimit: 60m
+    databaseMemoryLimit: 512Mi
+    databaseMemoryRequest: 128Mi
+    databaseName: tarjetas_database
+    databaseNameKeyEnvVar: POSTGRESQL_DATABASE
+    databasePassword: tarjetas
+    databasePasswordKeyEnvVar: POSTGRESQL_PASSWORD
+    databaseStorageRequest: 1Gi
+    databaseUser: tarjetas
+    databaseUserKeyEnvVar: POSTGRESQL_USER
+    image: centos/postgresql-96-centos7
+    size: 1
+---
+apiVersion: postgresql.dev4devs.com/v1alpha1
+kind: Database
+metadata:
+    name: creditos-database
+spec:
+    databaseCpu: 30m
+    databaseCpuLimit: 60m
+    databaseMemoryLimit: 512Mi
+    databaseMemoryRequest: 128Mi
+    databaseName: creditos_database
+    databaseNameKeyEnvVar: POSTGRESQL_DATABASE
+    databasePassword: creditos
+    databasePasswordKeyEnvVar: POSTGRESQL_PASSWORD
+    databaseStorageRequest: 1Gi
+    databaseUser: creditos
+    databaseUserKeyEnvVar: POSTGRESQL_USER
+    image: centos/postgresql-96-centos7
+    size: 1
+---
+apiVersion: postgresql.dev4devs.com/v1alpha1
+kind: Database
+metadata:
+    name: valores-database
+spec:
+    databaseCpu: 30m
+    databaseCpuLimit: 60m
+    databaseMemoryLimit: 512Mi
+    databaseMemoryRequest: 128Mi
+    databaseName: valores_database
+    databaseNameKeyEnvVar: POSTGRESQL_DATABASE
+    databasePassword: valores
+    databasePasswordKeyEnvVar: POSTGRESQL_PASSWORD
+    databaseStorageRequest: 1Gi
+    databaseUser: valores
+    databaseUserKeyEnvVar: POSTGRESQL_USER
+    image: centos/postgresql-96-centos7
+    size: 1
