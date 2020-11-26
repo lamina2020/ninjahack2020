@@ -29,6 +29,9 @@ import java.util.List;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 
+import io.smallrye.jwt.build.Jwt;
+import io.smallrye.jwt.build.JwtClaimsBuilder;
+
 @Path("/api/usuarios")
 @Produces(APPLICATION_JSON)
 public class UsuarioResource {
@@ -73,8 +76,9 @@ public class UsuarioResource {
 
     // tag::adocOpenAPI[]
     @Operation(summary = "Permite logarse a un usuario, si la contraseña es correcta")
-    @APIResponse(responseCode = "201", description = "Usuario obtenido", content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = URI.class)))
+    @APIResponse(responseCode = "201", description = "Token JWT")
     @APIResponse(responseCode = "204", description = "Usuario no encontrado")
+    @APIResponse(responseCode = "401", description = "Contraseña incorrecta")
     // end::adocOpenAPI[]
     @POST
     @Path("/login")
@@ -88,7 +92,13 @@ public class UsuarioResource {
         if(usuarioBBDD != null){
             if (usuario.password.equals(usuarioBBDD.password)){
                 LOGGER.debug("Credenciales del usuario "+usuario.email+" correctas");
-                return Response.ok(usuario).build();
+
+                // Creación de token JWT
+                JwtClaimsBuilder builder1 = Jwt.claims();
+                builder1.claim("email", usuario.email);
+                String token=builder1.sign();
+
+                return Response.ok(token).build();
             } else{
                 LOGGER.debug("Credenciales del usuario "+usuario.email+" incorrectas");
                 return Response.status(Response.Status.UNAUTHORIZED).build();

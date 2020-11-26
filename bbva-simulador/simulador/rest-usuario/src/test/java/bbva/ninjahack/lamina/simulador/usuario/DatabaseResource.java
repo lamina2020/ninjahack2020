@@ -10,8 +10,8 @@ public class DatabaseResource implements QuarkusTestResourceLifecycleManager {
 
     private static final PostgreSQLContainer DATABASE = new PostgreSQLContainer<>("postgres:10.5")
         .withDatabaseName("usuarios_database")
-        .withUsername("superman")
-        .withPassword("superman")
+        .withUsername("usuarios")
+        .withPassword("usuarios")
         .withExposedPorts(5432);
 
     @Override
