@@ -66,6 +66,43 @@ public class PosicionglobalResource {
         return Response.ok(cuentas).build();
     }
 
+    @Operation(summary = "Devuelve todas las tarjetas de un usuario")
+    @APIResponse(responseCode = "200", content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = Tarjeta.class, type = SchemaType.ARRAY)))
+    @APIResponse(responseCode = "204", description = "Sin tarjetas")
+    @RolesAllowed({ "User", "Admin" })
+    @GET
+    public Response getAllTarjetas() {
+        int idUsuario=Integer.parseInt(jwt.getClaim("idUsuario").toString());
+        List<Tarjeta> tarjetas = service.findAllTarjetas(idUsuario);
+        LOGGER.debug("Numero total de tarjetas del usuario " + idUsuario+ ": " + tarjetas.size());
+        return Response.ok(tarjetas).build();
+    }
+
+    @Operation(summary = "Devuelve todas los valores de un usuario")
+    @APIResponse(responseCode = "200", content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = Valor.class, type = SchemaType.ARRAY)))
+    @APIResponse(responseCode = "204", description = "Sin valores de Bolsa")
+    @RolesAllowed({ "User", "Admin" })
+    @GET
+    public Response getAllValores() {
+        int idUsuario=Integer.parseInt(jwt.getClaim("idUsuario").toString());
+        List<Valor> valores = service.findAllValores(idUsuario);
+        LOGGER.debug("Numero total de valores de Bolsa del usuario " + idUsuario+ ": " + valores.size());
+        return Response.ok(valores).build();
+    }
+
+    @Operation(summary = "Devuelve todas los creditos de un usuario")
+    @APIResponse(responseCode = "200", content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = Credito.class, type = SchemaType.ARRAY)))
+    @APIResponse(responseCode = "204", description = "Sin creditos bancarios")
+    @RolesAllowed({ "User", "Admin" })
+    @GET
+    public Response getAllCreditos() {
+        int idUsuario=Integer.parseInt(jwt.getClaim("idUsuario").toString());
+        List<Credito> creditos = service.findAllCreditos(idUsuario);
+        LOGGER.debug("Numero total de creditos del usuario " + idUsuario+ ": " + creditos.size());
+        return Response.ok(creditos).build();
+    }
+
+
     @GET
     @Produces(TEXT_PLAIN)
     @Path("/hello")

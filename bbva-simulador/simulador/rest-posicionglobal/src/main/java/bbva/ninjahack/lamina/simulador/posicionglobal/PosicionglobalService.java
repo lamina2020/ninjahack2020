@@ -38,6 +38,14 @@ public class PosicionglobalService {
     public List<Cuenta> findAllCuentas(int idUsuario) {
         return cuentaService.getAllCuentas(idUsuario);
     }
-
+    public List<Tarjeta> findAllTarjetas(int idUsuario) {
+        return tarjetaService.getAllTarjetas(idUsuario);
+    }
+    public List<Valor> findAllValores(int idUsuario) {
+        return valorService.getAllValores(idUsuario);
+    }
+    public List<Credito> findAllCreditos(int idUsuario) {
+        return creditoService.getAllCreditos(idUsuario);
+    }
 }
 // end::adocTransactional[]
