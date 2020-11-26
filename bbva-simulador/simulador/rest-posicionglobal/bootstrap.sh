@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 # tag::adocSnippet[]
+cd bbva-simulador/simulador
 mvn io.quarkus:quarkus-maven-plugin:1.2.0.Final:create \
-    -DprojectGroupId=io.quarkus.workshop.super-heroes \
-    -DprojectArtifactId=rest-fight \
-    -DclassName="io.quarkus.workshop.superheroes.fight.FightResource" \
-    -Dpath="api/fights"
-cd rest-fight
-./mvnw quarkus:add-extension -Dextensions="jdbc-postgresql,hibernate-orm-panache,hibernate-validator,quarkus-resteasy-jsonb,smallrye-openapi,kafka"
+    -DprojectGroupId=bbva.ninjahack.lamina.simulador \
+    -DprojectArtifactId=rest-usuario \
+    -DclassName="bbva.ninjahack.lamina.simulador.usuario.UsuarioResource" \
+    -Dpath="api/usuarios"
 # end::adocSnippet[]
