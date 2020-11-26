@@ -95,7 +95,7 @@ public class UsuarioResource {
 
                 // Creación de token JWT
                 JwtClaimsBuilder builder1 = Jwt.claims();
-                builder1.claim("email", usuario.email);
+                builder1.claim("idUsuario", usuarioBBDD.id);
                 String token=builder1.sign();
 
                 return Response.ok(token).build();
