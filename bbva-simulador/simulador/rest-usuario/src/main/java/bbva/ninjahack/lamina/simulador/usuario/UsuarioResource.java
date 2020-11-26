@@ -38,6 +38,12 @@ public class UsuarioResource {
     @Inject
     UsuarioService service;
 
+
+    // tag::adocOpenAPI[]
+    @Operation(summary = "Devuelve todos los usuarios")
+    @APIResponse(responseCode = "200", content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = Usuario.class, type = SchemaType.ARRAY)))
+    @APIResponse(responseCode = "204", description = "Sin usuarios")
+    // end::adocOpenAPI[]
     @GET
     public Response getAllUsuarios() {
         List<Usuario> usuarios = service.findAllUsuarios();
@@ -46,23 +52,36 @@ public class UsuarioResource {
     }
 
 
-// Registro usuario
-
+    // tag::adocOpenAPI[]
+    @Operation(summary = "Crea un usuario válido")
+    @APIResponse(responseCode = "201", description = "La URL del usuario creado", content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = URI.class)))
+    // end::adocOpenAPI[]
     @POST
     public Response createUsuario(
         @Valid Usuario usuario, @Context UriInfo uriInfo) {
+
+        if (service.findUsuarioByEmail(usuario.email) != null){
+            LOGGER.debug("El usuario " + usuario.email + " ya existe");
+            return Response.status(Response.Status.CONFLICT).build();
+        }
         usuario = service.persistUsuario(usuario);
         UriBuilder builder = uriInfo.getAbsolutePathBuilder().path(Long.toString(usuario.id));
         LOGGER.debug("New usuario created with URI " + builder.build().toString());
         return Response.created(builder.build()).build();
     }
 
-//Login
 
-    // TODO Buscar respuesta correcta para password erroneo
+    // tag::adocOpenAPI[]
+    @Operation(summary = "Permite logarse a un usuario, si la contraseña es correcta")
+    @APIResponse(responseCode = "201", description = "Usuario obtenido", content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = URI.class)))
+    @APIResponse(responseCode = "204", description = "Usuario no encontrado")
+    // end::adocOpenAPI[]
     @POST
     @Path("/login")
     public Response loginUsuario(
+        // tag::adocOpenAPI[]
+        @Parameter(description = "Usuario introducido en página de login", required = true)
+        // end::adocOpenAPI[]
         @Valid Usuario usuario, @Context UriInfo uriInfo) {
         Usuario usuarioBBDD = service.findUsuarioByEmail(usuario.email);
 
@@ -72,7 +91,7 @@ public class UsuarioResource {
                 return Response.ok(usuario).build();
             } else{
                 LOGGER.debug("Credenciales del usuario "+usuario.email+" incorrectas");
-                return Response.noContent().build();
+                return Response.status(Response.Status.UNAUTHORIZED).build();
             }
         } else{
             LOGGER.debug("Usuario "+usuario.email+" no encontrado");
@@ -80,9 +99,18 @@ public class UsuarioResource {
         }
     }
 
+
+    // tag::adocOpenAPI[]
+    @Operation(summary = "Devuelve un usuario dado un identificador")
+    @APIResponse(responseCode = "200", content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = Usuario.class)))
+    @APIResponse(responseCode = "204", description = "No se ha encontrado un usuario para el identificador")
+    // end::adocOpenAPI[]
     @GET
     @Path("/{id}")
     public Response getUsuario(
+        // tag::adocOpenAPI[]
+        @Parameter(description = "Identificador de usuario", required = true)
+        // end::adocOpenAPI[]
         @PathParam("id") Long id) {
         Usuario usuario = service.findUsuarioById(id);
         if (usuario != null) {
