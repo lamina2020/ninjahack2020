@@ -1,5 +1,5 @@
 // tag::adocResourceTest[]
-package bbva.ninjahack.lamina.simulador.usuario;
+package bbva.ninjahack.lamina.simulador.cuenta;
 
 import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.Random;
 
-import bbva.ninjahack.lamina.simulador.usuario.Usuario;
+import bbva.ninjahack.lamina.simulador.cuenta.Cuenta;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.post;
@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @QuarkusTest
 //@QuarkusTestResource(DatabaseResource.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class UsuarioResourceTest{
+public class CuentaResourceTest{
 
 
     // tag::adocOpenAPI[]
@@ -69,21 +69,6 @@ public class UsuarioResourceTest{
             .statusCode(OK.getStatusCode());
     }
     // end::adocHealth[]
-
-    @Test
-    void shouldGetToken(){
-        Usuario usuario = new Usuario();
-        usuario.email = "user3@lamina.com";
-        usuario.password = "openshift";
-
-        given()
-            .body(usuario)
-            .header(CONTENT_TYPE, APPLICATION_JSON)
-            .header(ACCEPT, APPLICATION_JSON)
-        .when().post("/api/usuarios/login")
-            .then()
-            .statusCode(OK.getStatusCode());
-    }
 
 }
 // end::adocResourceTest[]

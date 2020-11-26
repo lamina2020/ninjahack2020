@@ -87,23 +87,12 @@ public class CuentaResource {
             return Response.status(Response.Status.CONFLICT).build();
         }
         cuenta = service.persistCuenta(cuenta);
-        UriBuilder builder = uriInfo.getAbsolutePathBuilder().path(Long.toString(cuenta.iban));
+        UriBuilder builder = uriInfo.getAbsolutePathBuilder().path(Long.toString(cuenta.id));
         LOGGER.debug("New cuenta created with URI " + builder.build().toString());
         return Response.created(builder.build()).build();
     }
 
 
-    // tag::adocOpenAPI[]
-    @Operation(summary = "Permite obtener una cuenta, si el id es correcto")
-    @APIResponse(responseCode = "201", description = "Token JWT")
-    @APIResponse(responseCode = "204", description = "Cuenta no encontrada")
-    // end::adocOpenAPI[]
-
-    // tag::adocOpenAPI[]
-    @Operation(summary = "Devuelve un cuenta dado un identificador")
-    @APIResponse(responseCode = "200", content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = Cuenta.class)))
-    @APIResponse(responseCode = "204", description = "No se ha encontrado un cuenta para el identificador")
-    // end::adocOpenAPI[]
 
     @GET
     @Path("/{id}")

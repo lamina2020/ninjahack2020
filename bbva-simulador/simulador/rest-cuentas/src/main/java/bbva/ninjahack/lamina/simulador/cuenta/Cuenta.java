@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 import java.util.Random;
 // end::adocEntity[]
@@ -31,25 +32,20 @@ public class Cuenta extends PanacheEntity {
     @Override
     public String toString() {
         return "Cuenta{" +
-            "id='" + id + '\''' +
-            "id usuario=" + idusuario + '\''' +
+            "id='" + id +
+            ", idusuario='" + idusuario + '\'' +
             ", iban='" + iban + '\'' +
             ", saldo='" + saldo + '\'' +
         '}';
     }
 
-    public static Cuenta findByCuenta(String cuenta){
-        return find("idcuenta", idcuenta,"idusuario", idusuario, "saldo", saldo).firstResult();
+    public static Cuenta findByIBAN(String iban){
+        return find("iban", iban).firstResult();
     }
 
-
-
-
-
-
-
-
-
+    public static List listAll(int idusuario){
+        return find("idusuario", idusuario).list();
+    }
 
 }
 // end::adocEntity[]

@@ -1,8 +1,8 @@
 // tag::adocDatabaseConnection[]
-package bbva.ninjahack.lamina.simulador.usuario.health;
+package bbva.ninjahack.lamina.simulador.cuenta.health;
 
-import bbva.ninjahack.lamina.simulador.usuario.Usuario;
-import bbva.ninjahack.lamina.simulador.usuario.UsuarioService;
+import bbva.ninjahack.lamina.simulador.cuenta.Cuenta;
+import bbva.ninjahack.lamina.simulador.cuenta.CuentaService;
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.HealthCheckResponseBuilder;
@@ -17,16 +17,16 @@ import java.util.List;
 public class DatabaseConnectionHealthCheck implements HealthCheck {
 
     @Inject
-    UsuarioService usuarioService;
+    CuentaService cuentaService;
 
     @Override
     public HealthCheckResponse call() {
         HealthCheckResponseBuilder responseBuilder = HealthCheckResponse
-            .named("Usuario Datasource connection health check");
+            .named("Cuenta Datasource connection health check");
 
         try {
-            List<Usuario> usuarios = usuarioService.findAllUsuarios();
-            responseBuilder.withData("Number of usuarios in the database", usuarios.size()).up();
+            List<Cuenta> cuentas = cuentaService.findAllCuentas();
+            responseBuilder.withData("Number of cuentas in the database", cuentas.size()).up();
         } catch (IllegalStateException e) {
             responseBuilder.down();
         }
