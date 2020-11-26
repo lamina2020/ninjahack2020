@@ -37,12 +37,12 @@ public class CreditosService {
     }
 
 
-    // tag::adocPersistCuenta[]
+    // tag::adocPersistCreditos[]
     public Creditos persistCreditos(@Valid Creditos creditos) {
         Creditos.persist(creditos);
         return creditos;
     }
-    // end::adocPersistCuenta[]
+    // end::adocPersistCreditos[]
 
     public Creditos updateCreditos(@Valid Creditos creditos) {
         Creditos entity = Creditos.findById(creditos.id);

@@ -1,4 +1,4 @@
-// tag::adocPingCuenta[]
+// tag::adocPingCreditos[]
 package bbva.ninjahack.lamina.simulador.creditos.health;
 
 import bbva.ninjahack.lamina.simulador.creditos.CreditosResource;
@@ -22,4 +22,4 @@ public class PingCreditosResourceHealthCheck implements HealthCheck {
         return HealthCheckResponse.named("Ping Creditos REST Endpoint").up().build();
     }
 }
-// end::adocPingCuenta[]
+// end::adocPingCreditos[]
