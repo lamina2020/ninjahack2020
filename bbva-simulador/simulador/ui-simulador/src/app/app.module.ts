@@ -1,35 +1,40 @@
+﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers';
+
+import { appRoutingModule } from './app.routing';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
-import { FightListComponent } from './fight-list/fight-list.component';
-import { FightComponent } from './fight/fight.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
-import { FightService } from './shared';
-import { HttpClientModule } from '@angular/common/http';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { HomeComponent } from './home';
+import { LoginComponent } from './login';
+import { RegisterComponent } from './register';
+import { AlertComponent } from './_components';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FightListComponent,
-    FightComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    MatDividerModule,
-    MatCardModule,
-    MatButtonModule,
-    MatGridListModule,
-    MatTableModule
-  ],
-  providers: [FightService],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        appRoutingModule
+    ],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        LoginComponent,
+        RegisterComponent,
+        AlertComponent
+    ],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+        // provider used to create fake backend
+        fakeBackendProvider
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { };

@@ -1,9 +1,24 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-@Component({
-  selector: 'hero-root',
-  templateUrl: './app.component.html'
-})
+import { AuthenticationService } from './_services';
+import { User } from './_models';
+
+import './_content/app.less';
+
+@Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
-  title = 'Super Heroes Fight';
+    currentUser: User;
+
+    constructor(
+        private router: Router,
+        private authenticationService: AuthenticationService
+    ) {
+        this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    }
+
+    logout() {
+        this.authenticationService.logout();
+        this.router.navigate(['/login']);
+    }
 }
