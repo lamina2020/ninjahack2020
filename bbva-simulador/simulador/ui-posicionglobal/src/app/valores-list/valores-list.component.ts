@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { valores, valoresService } from '../shared';
+import { Valores, ValoresService } from '../shared';
 import {MatTableDataSource} from "@angular/material";
 
 @Component({
@@ -7,13 +7,13 @@ import {MatTableDataSource} from "@angular/material";
   templateUrl: './valores-list.component.html',
   styles: []
 })
-export class valoresListComponent implements OnInit {
+export class ValoresListComponent implements OnInit {
 
-  dataSource: MatTableDataSource < valores > ;
+  dataSource: MatTableDataSource < Valores > ;
   displayedColumns: string[] = ['iban', 'riesgo', 'interes', 'importe'];
 
-  constructor(private valoresService: valoresService) {
-    this.dataSource = new MatTableDataSource<valores>();
+  constructor(private valoresService: ValoresService) {
+    this.dataSource = new MatTableDataSource<Valores>();
     valoresService.emitter.subscribe(valores => {
       const data = this.dataSource.data;
       data.unshift(valores);
@@ -22,7 +22,7 @@ export class valoresListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.valoresService.apivaloressGet().subscribe(valoress => {
+    this.valoresService.apiValoressGet().subscribe(valoress => {
       this.dataSource.data = valoress;
     });
   }

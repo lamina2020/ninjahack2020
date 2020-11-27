@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { credito, creditoService } from '../shared';
+import { Credito, CreditoService } from '../shared';
 import {MatTableDataSource} from "@angular/material";
 
 @Component({
@@ -7,13 +7,13 @@ import {MatTableDataSource} from "@angular/material";
   templateUrl: './credito-list.component.html',
   styles: []
 })
-export class creditoListComponent implements OnInit {
+export class CreditoListComponent implements OnInit {
 
-  dataSource: MatTableDataSource < credito > ;
+  dataSource: MatTableDataSource < Credito > ;
   displayedColumns: string[] = ['iban', 'importe', 'interes', 'plazo', 'tipo'];
 
-  constructor(private creditoService: creditoService) {
-    this.dataSource = new MatTableDataSource<credito>();
+  constructor(private creditoService: CreditoService) {
+    this.dataSource = new MatTableDataSource<Credito>();
     creditoService.emitter.subscribe(credito => {
       const data = this.dataSource.data;
       data.unshift(credito);
@@ -22,7 +22,7 @@ export class creditoListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.creditoService.apicreditosGet().subscribe(creditos => {
+    this.creditoService.apiCreditosGet().subscribe(creditos => {
       this.dataSource.data = creditos;
     });
   }

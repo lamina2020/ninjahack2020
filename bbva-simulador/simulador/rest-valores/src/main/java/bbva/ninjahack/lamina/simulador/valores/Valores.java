@@ -42,6 +42,7 @@ public class Valores extends PanacheEntity {
             ", iban='" + iban + '\'' +
             ", riesgo='" + riesgo + '\'' +
             ", interes='" + interes + '\'' +
+            ", importe='" + importe + '\'' +
         '}';
     }
 

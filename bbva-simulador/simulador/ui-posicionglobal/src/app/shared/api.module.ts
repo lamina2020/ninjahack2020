@@ -4,13 +4,19 @@ import { HttpClient } from '@angular/common/http';
 
 
 import { CuentaService } from './api/cuenta.service';
+import { TarjetaService } from './api/tarjeta.service';
+import { CreditoService } from './api/credito.service';
+import { ValoresService } from './api/valores.service';
 
 @NgModule({
   imports:      [],
   declarations: [],
   exports:      [],
   providers: [
-    CuentaService
+    CuentaService,
+    TarjetaService,
+    CreditoService,
+    ValoresService
   ]
 })
 export class ApiModule {

@@ -13,10 +13,23 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { CuentaListComponent } from './cuenta-list/cuenta-list.component';
 import { CuentaService } from './shared';
 
+import { TarjetaListComponent } from './tarjeta-list/tarjeta-list.component';
+import { TarjetaService } from './shared';
+
+import { CreditoListComponent } from './credito-list/credito-list.component';
+import { CreditoService } from './shared';
+
+import { ValoresListComponent } from './valores-list/valores-list.component';
+import { ValoresService } from './shared';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    CuentaListComponent
+    CuentaListComponent,
+    TarjetaListComponent,
+    CreditoListComponent,
+    ValoresListComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +42,10 @@ import { CuentaService } from './shared';
     MatTableModule
   ],
   providers: [
-    CuentaService
+    CuentaService,
+    TarjetaService,
+    CreditoService,
+    ValoresService
   ],
   bootstrap: [AppComponent]
 })

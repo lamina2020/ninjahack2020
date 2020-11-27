@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { tarjeta, tarjetaService } from '../shared';
+import { Tarjeta, TarjetaService } from '../shared';
 import {MatTableDataSource} from "@angular/material";
 
 @Component({
@@ -7,13 +7,13 @@ import {MatTableDataSource} from "@angular/material";
   templateUrl: './tarjeta-list.component.html',
   styles: []
 })
-export class tarjetaListComponent implements OnInit {
+export class TarjetaListComponent implements OnInit {
 
-  dataSource: MatTableDataSource < tarjeta > ;
+  dataSource: MatTableDataSource < Tarjeta > ;
   displayedColumns: string[] = ['PAN', 'saldo'];
 
-  constructor(private tarjetaService: tarjetaService) {
-    this.dataSource = new MatTableDataSource<tarjeta>();
+  constructor(private tarjetaService: TarjetaService) {
+    this.dataSource = new MatTableDataSource<Tarjeta>();
     tarjetaService.emitter.subscribe(tarjeta => {
       const data = this.dataSource.data;
       data.unshift(tarjeta);
@@ -22,7 +22,7 @@ export class tarjetaListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.tarjetaService.apitarjetasGet().subscribe(tarjetas => {
+    this.tarjetaService.apiTarjetasGet().subscribe(tarjetas => {
       this.dataSource.data = tarjetas;
     });
   }
