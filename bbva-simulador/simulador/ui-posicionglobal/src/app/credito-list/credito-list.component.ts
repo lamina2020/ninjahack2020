@@ -10,7 +10,7 @@ import {MatTableDataSource} from "@angular/material";
 export class creditoListComponent implements OnInit {
 
   dataSource: MatTableDataSource < credito > ;
-  displayedColumns: string[] = ['IBAN', 'saldo'];
+  displayedColumns: string[] = ['iban', 'importe', 'interes', 'plazo', 'tipo'];
 
   constructor(private creditoService: creditoService) {
     this.dataSource = new MatTableDataSource<credito>();

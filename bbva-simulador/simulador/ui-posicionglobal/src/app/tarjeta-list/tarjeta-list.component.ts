@@ -10,7 +10,7 @@ import {MatTableDataSource} from "@angular/material";
 export class tarjetaListComponent implements OnInit {
 
   dataSource: MatTableDataSource < tarjeta > ;
-  displayedColumns: string[] = ['IBAN', 'saldo'];
+  displayedColumns: string[] = ['PAN', 'saldo'];
 
   constructor(private tarjetaService: tarjetaService) {
     this.dataSource = new MatTableDataSource<tarjeta>();

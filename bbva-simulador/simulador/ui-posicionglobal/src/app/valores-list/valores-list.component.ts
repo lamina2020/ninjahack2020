@@ -10,7 +10,7 @@ import {MatTableDataSource} from "@angular/material";
 export class valoresListComponent implements OnInit {
 
   dataSource: MatTableDataSource < valores > ;
-  displayedColumns: string[] = ['IBAN', 'saldo'];
+  displayedColumns: string[] = ['iban', 'riesgo', 'interes', 'importe'];
 
   constructor(private valoresService: valoresService) {
     this.dataSource = new MatTableDataSource<valores>();
