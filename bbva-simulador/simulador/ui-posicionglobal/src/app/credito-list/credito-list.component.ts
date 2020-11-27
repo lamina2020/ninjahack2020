@@ -1,29 +1,29 @@
 import {Component, OnInit} from '@angular/core';
-import { Cuenta, CuentaService } from '../shared';
+import { credito, creditoService } from '../shared';
 import {MatTableDataSource} from "@angular/material";
 
 @Component({
-  selector: 'cuenta-list',
-  templateUrl: './cuenta-list.component.html',
+  selector: 'credito-list',
+  templateUrl: './credito-list.component.html',
   styles: []
 })
-export class CuentaListComponent implements OnInit {
+export class creditoListComponent implements OnInit {
 
-  dataSource: MatTableDataSource < Cuenta > ;
+  dataSource: MatTableDataSource < credito > ;
   displayedColumns: string[] = ['IBAN', 'saldo'];
 
-  constructor(private cuentaService: CuentaService) {
-    this.dataSource = new MatTableDataSource<Cuenta>();
-    cuentaService.emitter.subscribe(cuenta => {
+  constructor(private creditoService: creditoService) {
+    this.dataSource = new MatTableDataSource<credito>();
+    creditoService.emitter.subscribe(credito => {
       const data = this.dataSource.data;
-      data.unshift(cuenta);
+      data.unshift(credito);
       this.dataSource.data = data;
     })
   }
 
   ngOnInit() {
-    this.cuentaService.apiCuentasGet().subscribe(cuentas => {
-      this.dataSource.data = cuentas;
+    this.creditoService.apicreditosGet().subscribe(creditos => {
+      this.dataSource.data = creditos;
     });
   }
 }
