@@ -13,11 +13,15 @@ import { FightService } from './shared';
 import { HttpClientModule } from '@angular/common/http';
 import { MatGridListModule } from '@angular/material/grid-list';
 
+import { CuentaListComponent } from './cuenta-list/cuenta-list.component';
+import { CuentaService } from './shared';
+
 @NgModule({
   declarations: [
     AppComponent,
     FightListComponent,
-    FightComponent
+    FightComponent,
+    CuentaListComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatGridListModule,
     MatTableModule
   ],
-  providers: [FightService],
+  providers: [
+    FightService,
+    CuentaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

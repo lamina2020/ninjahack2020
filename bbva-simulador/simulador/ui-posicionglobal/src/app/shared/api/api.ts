@@ -1,3 +1,5 @@
 export * from './fight.service';
+export * from './cuenta.service';
 import { FightService } from './fight.service';
-export const APIS = [FightService];
+import { CuentaService } from './cuenta.service';
+export const APIS = [FightService,CuentaService];

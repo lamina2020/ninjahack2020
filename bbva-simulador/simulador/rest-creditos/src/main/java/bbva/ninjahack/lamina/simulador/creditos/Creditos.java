@@ -28,6 +28,13 @@ public class Creditos extends PanacheEntity {
     @NotNull
     @Size(min = 1, max = 10)
     public int importe;
+    @NotNull
+    public float interes;
+    @NotNull
+    public int plazo;
+    @NotNull
+    public String tipo;
+
 
     @Override
     public String toString() {
@@ -36,6 +43,9 @@ public class Creditos extends PanacheEntity {
             ", idusuario='" + idusuario + '\'' +
             ", iban='" + iban + '\'' +
             ", importe='" + importe + '\'' +
+            ", interes='" + interes + '\'' +
+            ", plazo='" + plazo + '\'' +
+            ", tipo='" + tipo + '\'' +
         '}';
     }
 

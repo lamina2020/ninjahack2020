@@ -4,13 +4,16 @@ import { HttpClient } from '@angular/common/http';
 
 
 import { FightService } from './api/fight.service';
+import { CuentaService } from './api/cuenta.service';
 
 @NgModule({
   imports:      [],
   declarations: [],
   exports:      [],
   providers: [
-    FightService ]
+    FightService,
+    CuentaService
+  ]
 })
 export class ApiModule {
     public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders {

@@ -30,7 +30,9 @@ public class Valores extends PanacheEntity {
     public int riesgo;
     @NotNull
     @Size(min = 1, max = 2)
-    public int interes;
+    public float interes;
+    @NotNull
+    public float importe;
 
     @Override
     public String toString() {
