@@ -3,7 +3,6 @@ import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
 
-import { FightService } from './api/fight.service';
 import { CuentaService } from './api/cuenta.service';
 
 @NgModule({
@@ -11,7 +10,6 @@ import { CuentaService } from './api/cuenta.service';
   declarations: [],
   exports:      [],
   providers: [
-    FightService,
     CuentaService
   ]
 })
